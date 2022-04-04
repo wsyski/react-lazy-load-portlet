@@ -1,0 +1,25 @@
+{
+  "config": {
+    "imports": {
+      "@liferay/frontend-js-react-web": {
+        "/": "*",
+        "react": "*",
+        "react-dom": "*",
+        "tslib": "*"
+      },
+      "react-provider": {
+        "/": "*"
+      }
+    }
+  },
+  "create-jar": {
+    "output-filename": "react-lazy-load-portlet.jar",
+    "features": {
+      "js-extender": true,
+      "web-context": "/react-lazy-load-portlet"
+    }
+  },
+  "dump-report": true,
+  "max-parallel-files": 128,
+  "verbose": true
+}

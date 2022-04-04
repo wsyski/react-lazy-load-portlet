@@ -1,0 +1,37 @@
+{
+  "name": "react-lazy-load-portlet",
+  "license": "UNLICENSED",
+  "private": true,
+  "version": "1.0.0",
+  "description": "React Lazy Load Portlet",
+  "dependencies": {
+    "@babel/runtime": "~7.17.8",
+    "@liferay/portal-7.4": "*",
+    "react-feather": "1.1.4",
+    "styled-components": "5.3.5"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "~7.8.3",
+    "@babel/plugin-transform-runtime": "~7.17.0",
+    "@types/hoist-non-react-statics": "^3.3.1",
+    "@types/jest": "^24.0.5",
+    "@types/lodash": "^4.14.119",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@types/warning": "^3.0.0",
+    "@types/yup": "^0.24.9"
+  },
+  "portlet": {
+    "com.liferay.portlet.display-category": "category.sample",
+    "com.liferay.portlet.header-portlet-css": "/css/styles.css",
+    "com.liferay.portlet.instanceable": true,
+    "javax.portlet.name": "reactlazyloadportlet",
+    "javax.portlet.security-role-ref": "power-user,user",
+    "javax.portlet.resource-bundle": "content.Language"
+  },
+  "scripts": {
+    "build": "liferay build",
+    "clean": "liferay clean",
+    "deploy": "liferay deploy"
+  }
+}
