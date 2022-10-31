@@ -1,3 +1,3 @@
-# react-lazy-load-portlet
+# react_lazy_load_portlet
 
-React Portlet
+React Lazy Load Portlet

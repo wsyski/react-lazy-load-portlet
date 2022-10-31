@@ -1,20 +1,13 @@
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+.pre {
+	font-family: monospace;
+	white-space: pre;
 }
 
-.App {
-	font-family: sans-serif;
-	text-align: center;
+.tag {
+	font-weight: bold;
+	margin-right: 1em;
 }
 
-.calendar-container {
-	display: flex;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	align-items: center;
-	align-content: center;
-	justify-content: center;
+.value {
+	font-family: monospace;
 }
