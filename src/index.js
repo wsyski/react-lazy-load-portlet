@@ -53,9 +53,7 @@ export default function main(liferayParams) {
 		undefined
 	);
 	var portletElement = document.getElementById(liferayParamsWithDefaults.portletElementId);
-	var markup = React.createElement(AppComponent, {
-			liferayParams: liferayParamsWithDefaults,
-		});
+	var markup = React.createElement(AppComponent, {...liferayParamsWithDefaults});
 	ReactDOM.render(
 		process.env.NODE_ENV === 'development' ? (
 			<React.StrictMode>{markup}</React.StrictMode>
