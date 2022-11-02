@@ -29,10 +29,7 @@ function setLiferayParamsDefaults(
 	if (portletInstance) {
 		liferayParamsConfiguration = {
 			...liferayParamsConfiguration,
-			portletInstance: {
-				...portletInstance,
-				...liferayParamsConfiguration.portletInstance,
-			},
+			portletInstance: {...portletInstance, ...liferayParamsConfiguration.portletInstance},
 		};
 	}
 	if (system) {
@@ -62,7 +59,7 @@ export default function main(liferayParams) {
 		),
 		portletElement
 	);
-	if (process.env.NODE_ENV === 'production') {
+	if (process.env.NODE_ENV !== 'development') {
 		Liferay.once('destroyPortlet', () => {
 			ReactDOM.unmountComponentAtNode(portletElement);
 		});

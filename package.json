@@ -21,9 +21,11 @@
     "javax.portlet.resource-bundle": "content.Language"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production liferay build",
+    "build": "liferay build",
+    "build:prod": "cross-env NODE_ENV=production liferay build",
     "clean": "liferay clean",
-    "deploy": "cross-env NODE_ENV=production liferay deploy",
+    "deploy": "liferay deploy",
+    "deploy:prod": "cross-env NODE_ENV=production liferay deploy",
     "start": "react-scripts start"
   },
   "browserslist": {
