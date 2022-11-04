@@ -1,13 +1,13 @@
-import React from "react";
+import React, {Component} from "react";
 import classnames from "classnames";
 import styled from "styled-components";
 import Alert from "react-feather/dist/icons/alert-triangle";
 
-const Fallback = React.memo(styled(({ className }) => (
-  <div className={classnames("error-boundary", className)}>
-    <Alert color="orange" size={48} />
-    <span>Something went wrong</span>
-  </div>
+const Fallback = React.memo(styled(({className}) => (
+    <div className={classnames("error-boundary", className)}>
+        <Alert color="orange" size={48}/>
+        <span>Something went wrong</span>
+    </div>
 ))`
   display: flex;
   flex-flow: row wrap;
@@ -29,14 +29,19 @@ const Fallback = React.memo(styled(({ className }) => (
   }
 `);
 
-export default class extends React.Component {
-  state = { hasError: false, error: null };
+class ErrorBoundary extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {hasError: false, error: null};
+    }
 
-  static getDerivedStateFromError(error) {
-    return { hasError: true, error };
-  }
+    static getDerivedStateFromError(error) {
+        return {hasError: true, error};
+    }
 
-  render() {
-    return this.state.hasError ? <Fallback /> : this.props.children;
-  }
+    render() {
+        return this.state.hasError ? <Fallback/> : this.props.children;
+    }
 }
+
+export default ErrorBoundary;

@@ -13,7 +13,10 @@ import calendar, {
 } from "./calendarUtil";
 
 class Calendar extends Component {
-  state = { ...this.resolveStateFromProp(), today: new Date() };
+  constructor(props) {
+    super(props);
+    this.state = { ...this.resolveStateFromProp(), today: new Date() };
+  }
 
   resolveStateFromDate(date) {
     const isDateObject = isDate(date);

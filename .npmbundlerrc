@@ -272,6 +272,9 @@
       },
       "social-bookmarks-taglib": {
         "/": "*"
+      },
+      "react-shared": {
+        "/": "*"
       }
     },
     "strictGlobalDependencies": true
@@ -366,5 +369,7 @@
       "configuration": "features/configuration.json"
     }
   },
-  "dump-report": false
+  "dump-report": true,
+  "max-parallel-files": 128,
+  "verbose": true
 }
