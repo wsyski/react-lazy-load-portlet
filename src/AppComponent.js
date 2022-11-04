@@ -11,7 +11,7 @@ const Header = styled.h1`
 `;
 
 export default function AppComponent(liferayParams) {
-	console.log('liferayParams', liferayParams);
+	console.log('liferayParams', liferayParams, 'env', process.env);
 	return (
 		<div className="App">
 			<ErrorBoundary>

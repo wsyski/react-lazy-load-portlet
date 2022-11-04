@@ -5,68 +5,69 @@ import AppComponent from "./AppComponent";
 var PORTLET_NAMESPACE_DEFAULT = '_portlet_namespace_';
 
 var LIFERAY_PARAMS_DEFAULT = {
-	configuration: {
-		portletInstance: {},
-		system: {},
-	},
-	contextPath: '',
-	portletElementId: 'js-portlet-' + PORTLET_NAMESPACE_DEFAULT,
-	portletNamespace: PORTLET_NAMESPACE_DEFAULT,
+    configuration: {
+        portletInstance: {},
+        system: {},
+    },
+    contextPath: '',
+    portletElementId: 'js-portlet-' + PORTLET_NAMESPACE_DEFAULT,
+    portletNamespace: PORTLET_NAMESPACE_DEFAULT,
 };
 
 var DRINK = 'drink';
 
 var PORTLET_INSTANCE_DEFAULT = {
-	[DRINK]: 'orange',
+    [DRINK]: 'orange',
 };
 
 function setLiferayParamsDefaults(
-	liferayParams,
-	portletInstance,
-	system
+    liferayParams,
+    portletInstance,
+    system
 ) {
-	let liferayParamsConfiguration = liferayParams.configuration;
-	if (portletInstance) {
-		liferayParamsConfiguration = {
-			...liferayParamsConfiguration,
-			portletInstance: {...portletInstance, ...liferayParamsConfiguration.portletInstance},
-		};
-	}
-	if (system) {
-		liferayParamsConfiguration = {
-			...liferayParamsConfiguration,
-			system: {...system, ...liferayParamsConfiguration.system},
-		};
-	}
+    let liferayParamsConfiguration = liferayParams.configuration;
+    if (portletInstance) {
+        liferayParamsConfiguration = {
+            ...liferayParamsConfiguration,
+            portletInstance: {...portletInstance, ...liferayParamsConfiguration.portletInstance},
+        };
+    }
+    if (system) {
+        liferayParamsConfiguration = {
+            ...liferayParamsConfiguration,
+            system: {...system, ...liferayParamsConfiguration.system},
+        };
+    }
 
-	return {...liferayParams, configuration: liferayParamsConfiguration};
+    return {...liferayParams, configuration: liferayParamsConfiguration};
 }
 
+function isPortal() {
+    return typeof Liferay.once !== 'undefined';
+}
 
 export default function main(liferayParams) {
-	var liferayParamsWithDefaults = setLiferayParamsDefaults(
-		liferayParams,
-		PORTLET_INSTANCE_DEFAULT,
-		undefined
-	);
-	var portletElement = document.getElementById(liferayParamsWithDefaults.portletElementId);
-	var markup = React.createElement(AppComponent, {...liferayParamsWithDefaults});
-	ReactDOM.render(
-		process.env.NODE_ENV === 'development' ? (
-			<React.StrictMode>{markup}</React.StrictMode>
-		) : (
-			<React.Fragment>{markup}</React.Fragment>
-		),
-		portletElement
-	);
-	if (process.env.NODE_ENV !== 'development') {
-		Liferay.once('destroyPortlet', () => {
-			ReactDOM.unmountComponentAtNode(portletElement);
-		});
-	}
+    var liferayParamsWithDefaults = setLiferayParamsDefaults(
+        liferayParams,
+        PORTLET_INSTANCE_DEFAULT,
+        undefined
+    );
+    var portletElement = document.getElementById(liferayParamsWithDefaults.portletElementId);
+    var markup = React.createElement(AppComponent, {...liferayParamsWithDefaults});
+    ReactDOM.render(isPortal() ? (
+            <React.Fragment>{markup}</React.Fragment>
+        ) : (
+            <React.StrictMode>{markup}</React.StrictMode>
+        ),
+        portletElement
+    );
+    if (isPortal()) {
+        Liferay.once('destroyPortlet', () => {
+            ReactDOM.unmountComponentAtNode(portletElement);
+        });
+    }
 };
 
-if (process.env.NODE_ENV === 'development') {
-	main(LIFERAY_PARAMS_DEFAULT);
+if (!isPortal()) {
+    main(LIFERAY_PARAMS_DEFAULT);
 }
-

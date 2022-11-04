@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "React Lazy Load Portlet",
   "license": "UNLICENSED",
+  "main": "index.js",
   "dependencies": {
     "@liferay/portal-7.4": "*",
     "react-feather": "1.1.4",
