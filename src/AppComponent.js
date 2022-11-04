@@ -10,7 +10,8 @@ const Header = styled.h1`
   margin: 100px auto;
 `;
 
-export default function AppComponent() {
+export default function AppComponent(liferayParams) {
+	console.log('liferayParams', liferayParams);
 	return (
 		<div className="App">
 			<ErrorBoundary>
