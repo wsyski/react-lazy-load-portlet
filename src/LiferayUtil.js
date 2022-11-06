@@ -1,3 +1,15 @@
+export var PORTLET_NAMESPACE_DEFAULT = '_portlet_namespace_';
+
+export var LIFERAY_PARAMS_DEFAULT = {
+	configuration: {
+		portletInstance: {},
+		system: {},
+	},
+	contextPath: '',
+	portletElementId: 'js-portlet-' + PORTLET_NAMESPACE_DEFAULT,
+	portletNamespace: PORTLET_NAMESPACE_DEFAULT,
+};
+
 var LiferayUtil = function () {
     function LiferayUtil() {
     }
