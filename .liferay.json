@@ -1,5 +1,5 @@
 {
 	"deploy": {
-		"path": "/opt/java/liferay/arena-7.4.3.50-ga50/bundles/osgi/modules"
+		"path": "/opt/java/liferay/arena-7.4.3.51-ga51/bundles/osgi/modules"
 	}
 }
